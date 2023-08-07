@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<commandcontainer type="scenario" name="MSPaint.xml" scenariotype="Process" screenwidth="1622" screenheight="1123" colordepth="32" fontsmoothing="On" fontsmoothinggamma="0" fontsmoothingorientation="RGB" fontsmoothingtype="ClearType" lockinput="0" report="1" commandwaittime="1000" excludecommandwaittime="0" referencetime="1000" imgtolerance="0" errorsize="15" projectname="Watcher Workloads" createdby="rloader099" creationdate="6/18/2023 08:08:52 PM" lastmodifiedby="rloader099" lastmodifieddate="7/19/2023 02:35:07 PM" lastusedid="16897772889880000" scenarioid="1689777288988" sbversion="23.4.14" description="MSPaint App Test" donotcloseopenedprocesses="1" usecv="0" excelheadersstartrow="1" excelheadersendrow="1" exceldelimiter=":" commentedout="0" id="0" scenariosection="" step="0">
+  <errormessage message="%_scenario% Failed at the step number %_step% %_action% %_warning% iteration: %_iteration%" />
+  <command type="setvariable" stylename="rand" variable="xpos" vartype="number" scope="Internal" expression="200" no_of_decimals="0" digits_grouping="3" decimals_separator="." encrypted="0" commentedout="0" id="16871189378880040" scenariosection="" step="1"></command>
+  <command type="setvariable" stylename="rand" variable="ypos" vartype="number" scope="Internal" expression="200" no_of_decimals="0" digits_grouping="3" decimals_separator="." encrypted="0" commentedout="0" id="16871189378880041" scenariosection="" step="2"></command>
+  <command type="openapplication" commentedout="0" id="16871189378880001" scenariosection="" step="3">
+    <application>C:\Windows\System32\mspaint.exe</application>
+  </command>
+  <command type="transaction" name="Launch Paint" begin="1" referencetime="" report="" uflag="U" commentedout="0" id="16871189378880005" scenariosection="" step="4"></command>
+  <command type="windowaction" action="Waitwindow" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="30000" statusvariable="ExecMyWindowStatus" anchorx="Left" anchory="Top" commentedout="0" id="16871189378880002" scenariosection="" step="5">
+    <window processname="mspaint" classname="MSPaintApp" x="0" y="0" width="0" height="0" />
+    <coords />
+    <size width="1166" height="791" />
+  </command>
+  <command type="transaction" name="Launch Paint" end="1" referencetime="" report="" uflag="U" commentedout="0" id="16871189378880006" scenariosection="" step="6"></command>
+  <command type="windowaction" action="resize" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" continueonfail="1" statusvariable="ExecMyWindowStatus" anchorx="Left" anchory="Top" commentedout="0" id="16871189378880003" scenariosection="" step="7">
+    <window processname="mspaint" classname="MSPaintApp" x="0" y="0" width="0" height="0" />
+    <coords />
+    <size width="1000" height="700" />
+  </command>
+  <command type="windowaction" action="move" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" statusvariable="ExecMyWindowStatus" anchorx="Left" anchory="Top" commentedout="0" id="16871189378880004" scenariosection="" step="8">
+    <window windowsname="" processname="mspaint" classname="MSPaintApp" x="0" y="0" width="0" height="0" />
+    <coords />
+    <size width="1166" height="791" />
+  </command>
+  <command type="loop" iterations="5" onfail="" commentedout="0" id="16871189378880037" scenariosection="" step="9">
+    <command type="incvariable" variable="xpos" expression="10" commentedout="0" id="16871189378880042" scenariosection="" step="10"></command>
+    <command type="incvariable" variable="ypos" expression="10" commentedout="0" id="16871189378880043" scenariosection="" step="11"></command>
+    <command type="execute" block="DrawSquarePaint" timeout="10000" statusvariable="ExecMyComponentStatus" commentedout="0" id="16871189378880038" scenariosection="" step="12"></command>
+  </command>
+  <command type="windowaction" action="Waitwindow" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" statusvariable="ExecMyWindowStatus" anchorx="Left" anchory="Top" commentedout="0" id="16871189378880049" scenariosection="" step="13">
+    <window processname="mspaint" classname="MSPaintApp" />
+    <coords />
+    <size />
+  </command>
+  <command type="findbitmap" stylename="find_image_in_app_window" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" maxtries="3" continueonfail="" percentlinetolerance="10" colortolerance="0" anchorx="Center" anchory="Center" repaction="Page Down" repwait="1" reptimes="0" sleeptime="1000" useanchor="Window" waittodisappear="0" statusvariable="ExecMyImageStatus" usecurrentwindow="" commentedout="0" id="16871189378880044" scenariosection="" step="14">
+    <window processname="mspaint" />
+    <searcharea dx="0" dy="0" />
+    <excludearea xstart="0" ystart="0" xend="0" yend="0" />
+    <coordvars />
+    <bitmapname xpos="203" ypos="160" relative_xpos="202" relative_ypos="159" xsize="163" ysize="135">Drawing.bmp</bitmapname>
+  </command>
+  <command type="closeapplication" openedbyopenapplication="1" usetaskkill="0" closewindow="1" commentedout="0" id="16871189378880046" scenariosection="" step="15">
+    <application>mspaint</application>
+  </command>
+  <onfail rexp="1" commentedout="0" id="16871189378880045" scenariosection="" step="16">
+    <command type="closeapplication" openedbyopenapplication="1" usetaskkill="0" closewindow="1" commentedout="0" id="16871189378880047" scenariosection="" step="17">
+      <application>mspaint</application>
+    </command>
+  </onfail>
+  <commandcontainer type="block" name="DrawSquarePaint" report="0" usescenariothinktime="1" commandwaittime="1000" excludecommandwaittime="0" commentedout="0" id="0" scenariosection="" step="18">
+    <command type="findbitmap" stylename="find_image_in_active_window" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" maxtries="3" continueonfail="" percentlinetolerance="5" colortolerance="0" anchorx="Center" anchory="Center" repaction="Page Down" repwait="1" reptimes="0" sleeptime="1000" useanchor="Window" statusvariable="ExecMyImageStatus" usecurrentwindow="1" commentedout="0" id="16871189378880026" scenariosection="" step="19">
+      <searcharea dx="0" dy="0" />
+      <excludearea xstart="0" ystart="0" xend="0" yend="0" />
+      <coordvars />
+      <window />
+      <bitmapname xpos="175" ypos="119" relative_xpos="13" relative_ypos="7" xsize="22" ysize="18">MSPaint_Logo.bmp</bitmapname>
+      <command type="movemouse" useanchor="Parent" mousedrag="0" commentedout="0" id="16871189378880027" scenariosection="" step="20">
+        <coords x="0" y="0" dx="%xpos%" dy="%ypos%" />
+      </command>
+      <command type="mousebutton" button="Left" action="Down" commentedout="0" id="16871189378880031" scenariosection="" step="21"></command>
+      <command type="movemouse" useanchor="Mouse" mousedrag="1" commentedout="0" id="16871189378880032" scenariosection="" step="22">
+        <coords x="50" y="0" dx="50" dy="0" />
+      </command>
+      <command type="movemouse" useanchor="Mouse" mousedrag="1" commentedout="0" id="16871189378880033" scenariosection="" step="23">
+        <coords x="0" y="-50" dx="0" dy="-50" />
+      </command>
+      <command type="movemouse" useanchor="Mouse" mousedrag="1" commentedout="0" id="16871189378880034" scenariosection="" step="24">
+        <coords x="-50" y="0" dx="-50" dy="0" />
+      </command>
+      <command type="movemouse" useanchor="Mouse" mousedrag="1" commentedout="0" id="16871189378880035" scenariosection="" step="25">
+        <coords x="0" y="50" dx="0" dy="50" />
+      </command>
+      <command type="mousebutton" button="Left" action="Up" commentedout="0" id="16871189378880036" scenariosection="" step="26"></command>
+    </command>
+  </commandcontainer>
+  <Usage>
+    <commandcontainer type="scenario" name="MSPaint.xml" />
+  </Usage>
+</commandcontainer>

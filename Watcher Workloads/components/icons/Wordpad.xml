@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<commandcontainer type="scenario" name="Wordpad.xml" scenariotype="Process" screenwidth="1554" screenheight="1123" colordepth="32" fontsmoothing="On" fontsmoothinggamma="0" fontsmoothingorientation="RGB" fontsmoothingtype="ClearType" lockinput="0" report="1" commandwaittime="1000" excludecommandwaittime="0" referencetime="1000" imgtolerance="0" errorsize="15" projectname="Demo" createdby="rloader099" creationdate="6/5/2023 05:30:59 PM" lastmodifiedby="rloader099" lastmodifieddate="6/18/2023 08:33:12 PM" lastusedid="16833942596360000" scenarioid="1683394259636" sbversion="23.3.10" donotcloseopenedprocesses="1" usecv="0" excelheadersstartrow="1" excelheadersendrow="1" exceldelimiter=":" commentedout="0" id="0" scenariosection="" step="0">
+	<errormessage message="%_scenario% Failed at the step number %_step% %_action% %_warning% iteration: %_iteration%" />
+
+	<command type="execute" stylename="pshellcommand" powershellcommand="$env:userprofile" execpolicy="Bypass" timeout="10000" statusvariable="ExecMyComponentStatus" commentedout="0" id="16833942599030057" scenariosection="" step="1">
+		<expression expression="#output#" />
+	
+	</command>
+	<command type="setvariable" variable="DocumentLocation" expression="%output%\My_Document.rtf" scope="Internal" encrypted="0" vartype="string" commentedout="0" id="16833942599030029" scenariosection="" step="2">
+	
+	</command>
+	<command type="execute" stylename="pshellcommand" powershellcommand="Test-Path %DocumentLocation%" execpolicy="Bypass" timeout="10000" statusvariable="ExecMyComponentStatus" commentedout="0" id="16833942599030059" scenariosection="" step="3">
+		<expression expression="#output#" />
+	
+	</command>
+	<command type="setvariable" variable="DocumentPresent" expression="%output%" scope="Internal" encrypted="0" vartype="string" commentedout="0" id="16833942599030061" scenariosection="" step="4">
+	
+	</command>
+	<command type="openapplication" commentedout="0" id="16833942599030002" scenariosection="" step="5">
+		<application>C:\Program Files\windows nt\accessories\wordpad.exe</application>
+	
+	</command>
+	<command type="transaction" name="Launch Wordpad" begin="1" referencetime="" report="" uflag="U" commentedout="0" id="16833942599030004" scenariosection="" step="6">
+	
+	</command>
+	<command type="windowaction" action="Waitwindow" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="30000" statusvariable="ExecMyWindowStatus" anchorx="Left" anchory="Top" commentedout="0" id="16833942599030003" scenariosection="" step="7">
+		<window processname="wordpad" classname="" x="260" y="260" width="1166" height="791" />
+		<coords />
+		<size width="1166" height="791" />
+	
+	</command>
+	<command type="transaction" name="Launch Wordpad" end="1" referencetime="" report="" uflag="U" commentedout="0" id="16833942599030005" scenariosection="" step="8">
+	
+	</command>
+	<command type="windowaction" action="resize" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" continueonfail="1" statusvariable="ExecMyWindowStatus" anchorx="Left" anchory="Top" commentedout="0" id="16833942599030008" scenariosection="" step="9">
+		<window processname="wordpad" classname="" x="260" y="260" width="1166" height="791" />
+		<coords />
+		<size width="1000" height="700" />
+	
+	</command>
+	<command type="windowaction" action="move" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" statusvariable="ExecMyWindowStatus" anchorx="Left" anchory="Top" commentedout="0" id="16833942599030009" scenariosection="" step="10">
+		<window windowsname="Document - WordPad" processname="wordpad" classname="" x="260" y="260" width="1166" height="791" />
+		<coords />
+		<size width="1166" height="791" />
+	
+	</command>
+	<command type="if" expression="%DocumentPresent% == True" showelse="1" commentedout="0" id="16833942599030030" scenariosection="" step="11">
+	
+		<then commentedout="0" id="16833942599030031" scenariosection="" step="12">
+		
+			<command type="keyboardkey" action="Up" timeout="10000" commentedout="0" id="16833942599030042" scenariosection="" step="13">
+				<key key1="Alt" />
+				<window />
+			
+			</command>
+			<command type="keyboardkey" action="Combination" timeout="10000" commentedout="0" id="16833942599030043" scenariosection="" step="14">
+				<key key1="Alt" key2="F" />
+				<window />
+			
+			</command>
+			<command type="keyboardkey" action="Press" timeout="10000" commentedout="0" id="16833942599030064" scenariosection="" step="15">
+				<key key1="o" />
+				<window />
+			
+			</command>
+			<command type="windowaction" action="Waitwindow" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" statusvariable="ExecMyWindowStatus" anchorx="Left" anchory="Top" commentedout="0" id="16833942599030062" scenariosection="" step="16">
+				<window windowsname="Open" processname="wordpad" x="8" y="0" width="777" height="561" />
+				<coords />
+				<size width="777" height="561" />
+			
+			</command>
+			<command type="keyboardtypetext" encrypted="" timeout="" advancedfind="" delay="" cleanup="1" commentedout="0" id="16833942599030044" scenariosection="" step="17">
+				<text>%DocumentLocation%</text>
+				<window />
+				<key />
+			
+			</command>
+			<command type="keyboardkey" action="Press" timeout="10000" commentedout="0" id="16833942599030047" scenariosection="" step="18">
+				<key key1="Enter" />
+				<window />
+			
+			</command>
+			<command type="transaction" name="Open Document" begin="1" referencetime="" report="" uflag="U" commentedout="0" id="16833942599030065" scenariosection="" step="19">
+			
+			</command>
+			<command type="findbitmap" stylename="find_image_in_active_window" stringtofind="example" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" continueonfail="" percentlinetolerance="5" colortolerance="0" anchorx="Center" anchory="Center" repaction="Page Down" repwait="1" reptimes="0" sleeptime="1000" useanchor="Window" statusvariable="ExecMyImageStatus" usecurrentwindow="1" commentedout="0" id="16833942599030066" scenariosection="example" step="20">
+				<searcharea dx="0" dy="0" />
+				<excludearea xstart="0" ystart="0" xend="0" yend="0" />
+				<coordvars />
+				<window />
+				<bitmapname xpos="366" ypos="189" relative_xpos="365" relative_ypos="188" xsize="59" ysize="19">example.bmp</bitmapname>
+			
+			</command>
+			<command type="transaction" name="Open Document" end="1" referencetime="" report="" uflag="U" commentedout="0" id="16833942599030067" scenariosection="" step="21">
+			
+			</command>
+		</then>
+		<else commentedout="0" id="16833942599030032" scenariosection="" step="22">
+		
+			<command type="keyboardtypetext" encrypted="" timeout="" advancedfind="" delay="" cleanup="1" commentedout="0" id="16833942599030010" scenariosection="" step="23">
+				<text>This is an example of a document being saved into the users profile. We'll time how long it takes to save. </text>
+				<window />
+				<key />
+			
+			</command>
+			<command type="keyboardkey" action="Press" timeout="10000" commentedout="0" id="16833942599030011" scenariosection="" step="24">
+				<key key1="Enter" />
+				<window />
+			
+			</command>
+			<command type="keyboardtypetext" encrypted="" timeout="" advancedfind="" delay="" cleanup="1" commentedout="0" id="16833942599030012" scenariosection="" step="25">
+				<text>On the next run we'll check if the document is there and if it is we will simply open it.</text>
+				<window />
+				<key />
+			
+			</command>
+			<command type="keyboardkey" action="Combination" timeout="10000" commentedout="0" id="16833942599030013" scenariosection="" step="26">
+				<key key1="CTRL" key2="S" />
+				<window />
+			
+			</command>
+			<command type="keyboardtypetext" encrypted="" timeout="" advancedfind="" delay="" cleanup="1" commentedout="0" id="16833942599030014" scenariosection="" step="27">
+				<text>%DocumentLocation%</text>
+				<window />
+				<key />
+			
+			</command>
+			<command type="keyboardkey" action="Press" timeout="10000" commentedout="0" id="16833942599030015" scenariosection="" step="28">
+				<key key1="Enter" />
+				<window />
+			
+			</command>
+			<command type="timer" action="Suspend" commentedout="0" id="16833942599030054" scenariosection="" step="29">
+			
+			</command>
+			<command type="windowaction" action="Waitwindow" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="5000" continueonfail="1" statusvariable="SaveAsPresent" anchorx="Left" anchory="Top" commentedout="0" id="16833942599030023" scenariosection="" step="30">
+				<window windowsname="Confirm Save As" processname="wordpad" x="586" y="440" width="366" height="140" />
+				<coords />
+				<size width="366" height="140" />
+			
+			</command>
+			<command type="timer" action="Resume" commentedout="0" id="16833942599030055" scenariosection="" step="31">
+			
+			</command>
+			<command type="if" expression="%SaveAsPresent% == SUCCESS" showelse="0" commentedout="0" id="16833942599030025" scenariosection="" step="32">
+			
+				<then commentedout="0" id="16833942599030026" scenariosection="" step="33">
+				
+					<command type="findbitmap" stylename="find_image_in_active_window" stringtofind="Yes" ocrconfig="0 8 65 32 16 512 128 4 5 50 3 20 15 10 0.85 0 5 15 eng 3 40 300 11 1 1 20 1 " timeout="10000" continueonfail="" percentlinetolerance="5" colortolerance="0" anchorx="Center" anchory="Center" repaction="Page Down" repwait="1" reptimes="0" sleeptime="1000" useanchor="Window" statusvariable="ExecMyImageStatus" usecurrentwindow="1" commentedout="0" id="16833942599030022" scenariosection="Yes" step="34">
+						<searcharea dx="0" dy="0" />
+						<excludearea xstart="0" ystart="0" xend="0" yend="0" />
+						<coordvars />
+						<window />
+						<bitmapname xpos="786" ypos="534" relative_xpos="200" relative_ypos="94" xsize="76" ysize="33">Yes.bmp</bitmapname>
+					
+						<command type="moveclickmouse" useanchor="Parent" mousedrag="0" button="Left" action="Click" commentedout="0" id="16833942599030049" scenariosection="" step="35">
+							<coords x="0" y="0" dx="0" dy="0" />
+						
+						</command>
+					</command>
+				</then>
+				<else commentedout="0" id="16833942599030027" scenariosection="" step="36">
+				
+				</else>
+			</command>
+		</else>
+	</command>
+	<command type="closeapplication" openedbyopenapplication="1" usetaskkill="0" closewindow="1" commentedout="0" id="16833942599030050" scenariosection="" step="37">
+		<application>wordpad</application>
+	
+	</command>
+	<onfail rexp="1" commentedout="0" id="16833942599030006" scenariosection="" step="38">
+	
+		<command type="closeapplication" openedbyopenapplication="1" usetaskkill="0" closewindow="1" commentedout="0" id="16833942599030069" scenariosection="" step="39">
+			<application>wordpad</application>
+		
+		</command>
+	</onfail>
+
+<Usage><commandcontainer type="scenario" name="Wordpadrloader099_tmp.xml" /></Usage></commandcontainer>
